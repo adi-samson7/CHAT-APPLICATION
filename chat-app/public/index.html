@@ -7,13 +7,11 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <h1 onclick="goHome()">LiveChat</h1>
     <button id="themeToggle" class="theme-toggle">Dark Mode</button>
   </div>
 
-  <!-- Login Screen -->
 <div id="login-screen" class="screen-container">
   <div class="screen">
     <h2><span class="accent">Chat With Anyone,</span><br>Make Friends!</h2>
@@ -22,7 +20,6 @@
   </div>
 </div>
 
-<!-- Room Selection Screen -->
 <div id="room-screen" class="screen-container hidden">
   <div class="screen">
     <h3>Create A Room</h3>
@@ -38,9 +35,7 @@
   </div>
 </div>
 
-  <!-- Chat Screen -->
   <div id="chat-screen" class="hidden chat-layout">
-    <!-- Left Side Chat -->
     <div class="chat-area">
       <h2 id="chatRoomName"></h2>
       <p id="onlineCount"></p>
@@ -55,7 +50,6 @@
       <button onclick="exitRoom()" class="exit-button">Exit Room</button>
     </div>
 
-    <!-- Right Side User List -->
     <div class="user-list">
       <h3>Online</h3>
       <ul id="userList"></ul>
@@ -76,4 +70,3 @@
 </body>
 </html>
 
-<!-- node server.js -->

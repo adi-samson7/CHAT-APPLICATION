@@ -4,7 +4,6 @@ let username = '';
 let roomId = '';
 let roomName = '';
 
-// Handle login
 function goToRoomSelection() {
   const input = document.getElementById('usernameInput').value.trim();
   if (!input) return alert('Please enter a username');
@@ -14,7 +13,6 @@ function goToRoomSelection() {
   document.getElementById('room-screen').classList.remove('hidden');
 }
 
-// Create new room
 function createRoom() {
   const name = document.getElementById('roomNameInput').value.trim();
   if (!name) return alert("Please enter a room name.");
@@ -37,7 +35,6 @@ function createRoom() {
     });
 }
 
-// Join existing room
 function joinRoom() {
   const input = document.getElementById('joinRoomInput').value.trim();
   if (!input) return alert('Enter room ID to join.');
@@ -53,7 +50,6 @@ function joinRoom() {
     .catch(() => alert('Room not found.'));
 }
 
-// Join chat UI and notify server
 function joinChatRoom() {
   document.getElementById('room-screen').classList.add('hidden');
   document.getElementById('chat-screen').classList.remove('hidden');
@@ -62,7 +58,6 @@ function joinChatRoom() {
   socket.emit('join-room', { username, room: roomId, roomName });
 }
 
-// Send message
 document.getElementById('chat-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const msg = document.getElementById('messageInput').value.trim();
@@ -72,7 +67,6 @@ document.getElementById('chat-form').addEventListener('submit', (e) => {
   }
 });
 
-// Receive message
 socket.on('chat message', (data) => {
   const li = document.createElement('li');
 
@@ -90,12 +84,10 @@ socket.on('chat message', (data) => {
   messages.scrollTop = messages.scrollHeight;
 });
 
-// Update online count
 socket.on('user-count', (count) => {
   document.getElementById('onlineCount').innerText = `Online: ${count}`;
 });
 
-// Update online user list
 socket.on('user-list', (users) => {
   const userList = document.getElementById('userList');
   userList.innerHTML = '';
@@ -106,21 +98,18 @@ socket.on('user-list', (users) => {
   });
 });
 
-// Exit chat room
 function exitRoom() {
   socket.emit('leave-room', roomId);
   resetChatUI();
   document.getElementById('room-screen').classList.remove('hidden');
 }
 
-// Return to login
 function goHome() {
   socket.emit('leave-room', roomId);
   resetChatUI();
   document.getElementById('login-screen').classList.remove('hidden');
 }
 
-// Helper to clear chat UI
 function resetChatUI() {
   roomId = '';
   roomName = '';

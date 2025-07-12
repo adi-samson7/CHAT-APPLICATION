@@ -1,4 +1,3 @@
-/* Reset and Base */
 * {
   margin: 0;
   padding: 0;
@@ -14,12 +13,10 @@ body, html {
   flex-direction: column;
 }
 
-/* Hidden screen */
 .hidden {
   display: none !important;
 }
 
-/* Navbar */
 .navbar {
   position: relative;
   height: 50px;
@@ -59,7 +56,6 @@ body, html {
   color: white;
 }
 
-/* Screen Container */
 .screen-container {
   display: flex;
   justify-content: center;
@@ -108,7 +104,6 @@ body, html {
   background-color: #2563eb;
 }
 
-/* Chat Screen */
 #chat-screen {
   display: flex;
   flex: 1;
@@ -116,7 +111,6 @@ body, html {
   overflow: hidden;
 }
 
-/* Chat Area */
 .chat-area {
   flex: 4;
   display: flex;
@@ -181,7 +175,6 @@ li {
   max-width: 100%;
 }
 
-/* Chat Input */
 #chat-form {
   display: flex;
   margin-top: 10px;
@@ -218,7 +211,6 @@ button:hover {
   background-color: #2563eb;
 }
 
-/* Exit */
 .exit-button {
   margin-top: 10px;
   background-color: #ef4444;
@@ -228,7 +220,6 @@ button:hover {
   background-color: #dc2626;
 }
 
-/* User List */
 .user-list {
   flex: 1;
   background-color: #0f172a;
@@ -262,7 +253,6 @@ button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Light Theme Overrides */
 body.light {
   background-color: #f1f5f9;
   color: #1e293b;

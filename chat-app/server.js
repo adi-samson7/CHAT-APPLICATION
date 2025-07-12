@@ -8,19 +8,17 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const roomMap = {};      // { roomId: roomName }
-const roomUsers = {};    // { roomId: [username, ...] }
+const roomMap = {};      
+const roomUsers = {};    
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 
-// Generate a 6-character room ID
 function generateRoomID() {
   return crypto.randomBytes(3).toString('hex');
 }
 
-// Send updated user list and count
 function updateRoomState(room) {
   const users = roomUsers[room] || [];
   io.to(room).emit('user-count', users.length);
@@ -91,13 +89,11 @@ io.on('connection', (socket) => {
   });
 });
 
-// Create room
 app.get('/create-room', (req, res) => {
   const roomId = generateRoomID();
   res.json({ roomId });
 });
 
-// Register room name
 app.post('/register-room', (req, res) => {
   const { roomId, roomName } = req.body;
 
@@ -109,7 +105,6 @@ app.post('/register-room', (req, res) => {
   res.status(200).json({ message: 'Room registered' });
 });
 
-// Get room name
 app.get('/room-name/:roomId', (req, res) => {
   const name = roomMap[req.params.roomId];
   if (!name) {
@@ -119,7 +114,6 @@ app.get('/room-name/:roomId', (req, res) => {
   res.json({ roomName: name });
 });
 
-// Start server
 server.listen(3000, () => {
   console.log('🚀 Server running at http://localhost:3000');
 });
